@@ -23,7 +23,7 @@ function Login() {
 			<Formik
 				initialValues={{
 					email: username,
-					password: 'test',
+					password: 'AlsdrPortalAdmin21',
 				}}
 				onSubmit={(values) => {
 					dispatch(loginAction(values.email, values.password));

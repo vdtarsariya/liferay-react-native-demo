@@ -13,7 +13,7 @@ import HTML from './HTML';
 import Pagination from './Pagination';
 
 const ContentSet = ({navigation, route}) => {
-	const [, , request] = useAppState();
+	const [state, request] = useAppState();
 
 	const {contentSetId} = route.params;
 

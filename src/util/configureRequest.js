@@ -21,23 +21,28 @@ export default function (options = {}) {
 	} = options;
 
 	function login({password, username}) {
+		console.log('oauth? ', oauth);
 		return oauth
 			? loginOAuth({password, username})
 			: loginBasic({password, username});
 	}
 
 	function loginBasic({password, username}) {
+		console.log('Password: ', password);
+		console.log('Username: ', username);
+
 		const access_token = base64.encode(`${username}:${password}`);
 
 		return request(
 			'/o/headless-admin-user/v1.0/my-user-account',
 			{
 				headers: {
-					Authorization: `Basic ${access_token}`,
+					Authorization: `Basic dGVzdEBsaWZlcmF5LmNvbTpBbHNkclBvcnRhbEFkbWluMjE=`,
 				},
 			},
 			false
 		).then(() => {
+			console.log('Success!!');
 			setAuth({
 				access_token,
 				token_type: 'Basic',

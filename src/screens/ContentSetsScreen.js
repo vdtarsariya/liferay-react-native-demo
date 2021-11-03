@@ -1,5 +1,5 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FlatList, RefreshControl, Text} from 'react-native';
 import {useQuery} from 'react-query';
 
@@ -12,6 +12,7 @@ import NoSiteSelected from '../components/NoSiteSelected';
 import ToggleDrawerButton from '../components/ToggleDrawerButton';
 import {useAppState} from '../hooks/appState';
 import gStyles from '../styles/main';
+import axios from 'axios';
 
 const TYPE_MAP = {
 	0: 'Dynamic Selction',
@@ -27,7 +28,7 @@ const ContentSets = ({navigation}) => {
 		siteId && ['contentSets', siteId],
 		() => {
 			return request(
-				`/api/jsonws/assetlist.assetlistentry/get-asset-list-entries/group-id/${siteId}/start/-1/end/-1/-order-by-comparator`
+				`/api/jsonws/assetlist.assetlistentry/get-asset-list-entries/group-id/${siteId}/start/-1/end/-1/-order-by-comparator?p_auth=3qDjOesK`
 			);
 		}
 	);
